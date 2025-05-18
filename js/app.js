@@ -17,9 +17,26 @@ btnConfirmar.addEventListener("click", ()=>{
     } else{
         alert("No elegiste ningun mounstruo")
     }
+
+    if (mounstruoAleatorio === 1){
+        eleccionRival.src = "./img/Mounstruo fuego.png"
+    } else if (mounstruoAleatorio === 2){
+        eleccionRival.src = "./img/Monstruo agua.png"
+    } else if (mounstruoAleatorio === 3){
+        eleccionRival.src = "./img/Mounstruo piedra.png"
+    }
+})
+const btnPelear = document.getElementById("btnPelear")
+btnPelear.addEventListener("click", ()=>{
+    alert("Combate iniciado")
+})
+const btnReelegir = document.getElementById("btnReelegir")
+btnReelegir.addEventListener("click", ()=>{
+    location.reload()
 })
 
 //----------------------IMG----------------------
+
 const eleccionUsuario = document.createElement("img")
 const eleccionRival = document.createElement("img")
 
@@ -31,6 +48,14 @@ eleccionRival.classList.add("w-25")
 
 figureUsuario.appendChild(eleccionUsuario)
 figureRival.appendChild(eleccionRival)
+
+//---------------FUNCIONES------------------
+
+function numeroAleatorio(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+let mounstruoAleatorio = numeroAleatorio(1, 3)
 
 
 
