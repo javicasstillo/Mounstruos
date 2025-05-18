@@ -22,3 +22,8 @@ input:checked + label .personaje-img {
     background-color: beige;
     border-radius: 50%;
 }
+
+.invertir{
+    display: flex;
+    flex-direction: column-reverse;
+}
