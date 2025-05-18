@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "AlfaSlab";
+    src: url(../Fonts/AlfaSlabOne-Regular.ttf);
+}
+
+.marca{
+    font-family: "AlfaSlab";
+}
+
+@keyframes flotar {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+input{
+    display: none;
+}
+
+input:checked + label .personaje-img {
+    animation: flotar 1s ease-in-out infinite;
+    background-color: beige;
+    border-radius: 50%;
+}
