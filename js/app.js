@@ -8,11 +8,15 @@ const mounstruoTierra = document.getElementById("mounstruoTierra")
 const botones = document.getElementById("botones")
 const btnConfirmar = document.getElementById("btnConfirmar")
 btnConfirmar.addEventListener("click", ()=>{
+    seccionElegirMounstruo.style.display = "none"
+    seccionPreCombate.style.display = "block"
     usuario()
     rival()
 })
 const btnPelear = document.getElementById("btnPelear")
 btnPelear.addEventListener("click", ()=>{
+    seccionPreCombate.style.display = "none"
+    seccionCombate.style.display = "block"
     usuario()
 })
 const btnReelegir = document.getElementById("btnReelegir")
@@ -68,14 +72,15 @@ function usuario(){
     if (mounstruoFuego.checked === true){
         eleccionUsuarioPre.src = "./img/Mounstruo fuego.png"
         eleccionUsuarioCombate.src = "./img/Mounstruo fuego.png"
+        
     } else if (mounstruoAgua.checked === true){
         eleccionUsuarioPre.src = "./img/Monstruo agua.png"
         eleccionUsuarioCombate.src = "./img/Monstruo agua.png"
+        
     } else if (mounstruoTierra.checked === true){
         eleccionUsuarioPre.src = "./img/Mounstruo piedra.png"
         eleccionUsuarioCombate.src = "./img/Mounstruo piedra.png"
-    } else{
-        alert("No elegiste ningun mounstruo")
+        
     }
 }
 
@@ -144,4 +149,11 @@ function generarAtaqueAleatorio(){
     }
 }
 
+//----------SECCIONES------------
 
+const seccionElegirMounstruo = document.getElementById("elegirMounstruo")
+const seccionPreCombate = document.getElementById("preCombate")
+const seccionCombate = document.getElementById("combate")
+
+seccionPreCombate.style.display = "none"
+seccionCombate.style.display = "none"
