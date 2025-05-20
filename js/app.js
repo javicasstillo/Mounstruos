@@ -47,12 +47,12 @@ const eleccionRivalCombate = document.createElement("img")
 const figureUsuarioPre = document.getElementById("figureUsuarioPre")
 const figureRivalPre = document.getElementById("figureRivalPre")
 const figureUsuarioCombate = document.getElementById("figureUsuarioCombate")
-const figureRivalCombate = document.getElementById("figureUsuarioCombate")
+const figureRivalCombate = document.getElementById("figureRivalCombate")
 
-eleccionUsuarioPre.classList.add("w-25")
-eleccionRivalPre.classList.add("w-25")
-eleccionUsuarioCombate.classList.add("w-25")
-eleccionRivalCombate.classList.add("w-25")
+eleccionUsuarioPre.classList.add("w-75")
+eleccionRivalPre.classList.add("w-75")
+eleccionUsuarioCombate.classList.add("w-75")
+eleccionRivalCombate.classList.add("w-75")
 
 figureUsuarioPre.appendChild(eleccionUsuarioPre)
 figureRivalPre.appendChild(eleccionRivalPre)
@@ -100,10 +100,10 @@ function rival(){
 
 //-------------RESULTADO PARCIAL-------------
 
-const ul = document.getElementById("ul")
-let li = document.createElement("li")
+const ulUsuario = document.getElementById("ulUsuario")
+const ulRival = document.getElementById("ulRival")
+const UlresultadoParcial = document.getElementById("UlResultadoParcial")
 
-let resultadoParcial
 
 let ataqueAleatorio = numeroAleatorio(1,3)
 let ataqueUsuario 
@@ -125,21 +125,57 @@ btnTijera.addEventListener("click", ()=>{
 })
 
 function combate(){
+
     generarAtaqueAleatorio()
+
+
+    let liUsuario = document.createElement("li")
+    liUsuario.classList.add("list-group-item")
+    liUsuario.textContent = ataqueUsuario
+    ulUsuario.appendChild(liUsuario)
+
+    let liResultadoParcial = document.createElement("li")
+    liResultadoParcial.classList.add("list-group-item")
+    UlresultadoParcial.appendChild(liResultadoParcial)
+
+    let liRival = document.createElement("li")
+    liRival.classList.add("list-group-item")
+    liRival.textContent = ataqueEnemigo
+    ulRival.appendChild(liRival)
+
+    
+
     if (ataqueUsuario === ataqueEnemigo){
-        alert("Empate")
+        liUsuario.textContent = ataqueUsuario
+        liRival.textContent = ataqueEnemigo
+        liResultadoParcial.textContent = "-"
+        
+        
     } else if (ataqueUsuario === "piedra" && ataqueEnemigo === "tijera"){
-        alert(`Elegiste ${ataqueUsuario} y tu enemigo eligio ${ataqueEnemigo}. GANASTE`)
+        liUsuario.textContent = ataqueUsuario
+        liRival.textContent = ataqueEnemigo
+        liResultadoParcial.textContent = "V"
+        liResultadoParcial.classList.add("bg-success")
     } else if (ataqueUsuario === "papel" && ataqueEnemigo === "piedra"){
-        alert(`Elegiste ${ataqueUsuario} y tu enemigo eligio ${ataqueEnemigo}. GANASTE`)
+        liUsuario.textContent = ataqueUsuario
+        liRival.textContent = ataqueEnemigo
+        liResultadoParcial.textContent = "V"
+        liResultadoParcial.classList.add("bg-success")
     } else if (ataqueUsuario === "tijera" && ataqueEnemigo === "papel"){
-        alert(`Elegiste ${ataqueUsuario} y tu enemigo eligio ${ataqueEnemigo}. GANASTE`)
+        liUsuario.textContent = ataqueUsuario
+        liRival.textContent = ataqueEnemigo
+        liResultadoParcial.textContent = "V"
+        liResultadoParcial.classList.add("bg-success")
     } else{
-        alert(`Elegiste ${ataqueUsuario} y tu enemigo eligio ${ataqueEnemigo}.PERDISTE`)
+        liUsuario.textContent = ataqueUsuario
+        liRival.textContent = ataqueEnemigo
+        liResultadoParcial.textContent = "P"
+        liResultadoParcial.classList.add("bg-danger")
     }
 }
 
 function generarAtaqueAleatorio(){
+    ataqueAleatorio = numeroAleatorio(1, 3)
     if (ataqueAleatorio === 1){
         ataqueEnemigo = "piedra"
     } else if(ataqueAleatorio === 2){
