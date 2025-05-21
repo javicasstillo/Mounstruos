@@ -51,8 +51,8 @@ const figureRivalCombate = document.getElementById("figureRivalCombate")
 
 eleccionUsuarioPre.classList.add("w-75")
 eleccionRivalPre.classList.add("w-75")
-eleccionUsuarioCombate.classList.add("w-75")
-eleccionRivalCombate.classList.add("w-75")
+eleccionUsuarioCombate.classList.add("w-25")
+eleccionRivalCombate.classList.add("w-25")
 
 figureUsuarioPre.appendChild(eleccionUsuarioPre)
 figureRivalPre.appendChild(eleccionRivalPre)
@@ -124,10 +124,13 @@ btnTijera.addEventListener("click", ()=>{
     combate()
 })
 
+
+let vidasUsuario = 3 
+let vidasRival = 3
+
 function combate(){
 
     generarAtaqueAleatorio()
-
 
     let liUsuario = document.createElement("li")
     liUsuario.classList.add("list-group-item")
@@ -156,22 +159,33 @@ function combate(){
         liRival.textContent = ataqueEnemigo
         liResultadoParcial.textContent = "V"
         liResultadoParcial.classList.add("bg-success")
+        vidasRival--
+        vidas()
     } else if (ataqueUsuario === "papel" && ataqueEnemigo === "piedra"){
         liUsuario.textContent = ataqueUsuario
         liRival.textContent = ataqueEnemigo
         liResultadoParcial.textContent = "V"
         liResultadoParcial.classList.add("bg-success")
+        vidasRival--
+        vidas()
     } else if (ataqueUsuario === "tijera" && ataqueEnemigo === "papel"){
         liUsuario.textContent = ataqueUsuario
         liRival.textContent = ataqueEnemigo
         liResultadoParcial.textContent = "V"
         liResultadoParcial.classList.add("bg-success")
+        vidasRival--
+        vidas()
     } else{
         liUsuario.textContent = ataqueUsuario
         liRival.textContent = ataqueEnemigo
         liResultadoParcial.textContent = "P"
         liResultadoParcial.classList.add("bg-danger")
+        vidasUsuario--
+        vidas()
+        
     }
+
+    finDelJuego()
 }
 
 function generarAtaqueAleatorio(){
@@ -184,6 +198,43 @@ function generarAtaqueAleatorio(){
         ataqueEnemigo = "tijera"
     }
 }
+
+let resultadoFinal = document.getElementById("resultadoFinal")
+let reiniciar = document.getElementById("reiniciar")
+let btnReiniciar = document.createElement("button")
+btnReiniciar.classList.add("btn", "btn-outline-dark")
+btnReiniciar.textContent = "Volver a Jugar"
+btnReiniciar.addEventListener("click", ()=>{
+    location.reload()
+})
+
+let contenedorVidasUsuario = document.getElementById("contenedorVidasUsuario")
+let contenedorVidasRival = document.getElementById("contenedorVidasRival")
+
+function vidas(){
+    contenedorVidasUsuario.textContent = `Vidas: ${vidasUsuario}`
+    contenedorVidasRival.textContent = `Vidas: ${vidasRival}`
+}
+
+function finDelJuego(){
+    if(vidasUsuario === 0){
+    resultadoFinal.textContent = "PERDISTE"
+    resultadoFinal.classList.add("text-danger")
+    btnPiedra.disabled = true
+    btnPapel.disabled = true
+    btnTijera.disabled = true
+    reiniciar.appendChild(btnReiniciar)
+} else if (vidasRival === 0){
+    resultadoFinal.textContent = "GANASTE"
+    resultadoFinal.classList.add("text-success")
+    btnPiedra.disabled = true
+    btnPapel.disabled = true
+    btnTijera.disabled = true
+    reiniciar.appendChild(btnReiniciar)
+}
+}
+
+
 
 //----------SECCIONES------------
 

@@ -3,6 +3,8 @@
     src: url(../Fonts/AlfaSlabOne-Regular.ttf);
 }
 
+
+
 .marca{
     font-family: "AlfaSlab";
 }
@@ -26,4 +28,8 @@ input:checked + label .personaje-img {
 .invertir{
     display: flex;
     flex-direction: column-reverse;
+}
+
+a{
+    text-decoration: none;
 }
