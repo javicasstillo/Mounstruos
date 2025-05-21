@@ -51,8 +51,8 @@ const figureRivalCombate = document.getElementById("figureRivalCombate")
 
 eleccionUsuarioPre.classList.add("w-75")
 eleccionRivalPre.classList.add("w-75")
-eleccionUsuarioCombate.classList.add("w-25")
-eleccionRivalCombate.classList.add("w-25")
+eleccionUsuarioCombate.classList.add("w-75")
+eleccionRivalCombate.classList.add("w-75")
 
 figureUsuarioPre.appendChild(eleccionUsuarioPre)
 figureRivalPre.appendChild(eleccionRivalPre)
