@@ -3,8 +3,21 @@
 const mounstruoFuego = document.getElementById("mounstruoFuego")
 const mounstruoAgua = document.getElementById("mounstruoAgua")
 const mounstruoTierra = document.getElementById("mounstruoTierra")
+const portada = document.getElementById("portada")
+const seccionElegirMounstruo = document.getElementById("elegirMounstruo")
+const seccionPreCombate = document.getElementById("preCombate")
+const seccionCombate = document.getElementById("combate")
+
+seccionPreCombate.style.display = "none"
+seccionCombate.style.display = "none"
+seccionElegirMounstruo.style.display = "none"
 
 //-------------------------BOTONES------------------
+let btnJugar = document.getElementById("btnJugar")
+btnJugar.addEventListener("click", ()=>{
+    portada.style.display = "none"
+    seccionElegirMounstruo.style.display = "block"
+})
 const botones = document.getElementById("botones")
 const btnConfirmar = document.getElementById("btnConfirmar")
 btnConfirmar.addEventListener("click", ()=>{
@@ -238,9 +251,5 @@ function finDelJuego(){
 
 //----------SECCIONES------------
 
-const seccionElegirMounstruo = document.getElementById("elegirMounstruo")
-const seccionPreCombate = document.getElementById("preCombate")
-const seccionCombate = document.getElementById("combate")
 
-seccionPreCombate.style.display = "none"
-seccionCombate.style.display = "none"
+
